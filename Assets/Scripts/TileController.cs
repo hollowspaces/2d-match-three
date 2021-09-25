@@ -63,6 +63,8 @@ public class TileController : MonoBehaviour
             return;
         }
 
+        SoundManager.Instance.PlayTap();
+
         // Already selected this tile?
         if (isSelected)
         {
@@ -78,7 +80,7 @@ public class TileController : MonoBehaviour
 
             else
             {
-                // is this an adjacent tile?
+                // is this an adjacent tiles?
                 if (GetAllAdjacentTiles().Contains(previousSelected))
                 {
                     TileController otherTile = previousSelected;
@@ -92,6 +94,7 @@ public class TileController : MonoBehaviour
                         }
                         else
                         {
+                            SoundManager.Instance.PlayWrong();
                             SwapTile(otherTile);
                         }
                     });
